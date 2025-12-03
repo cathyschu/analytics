@@ -4,7 +4,7 @@ project:
 
 website:
   title: "Cat Analytics"
-#  favicon: /images/catgeo.svg
+  favicon: /images/catgeo.svg
   
   navbar:
     logo: "images/catgeo.png"
