@@ -14,18 +14,18 @@ about:
       href: https://www.linkedin.com/in/cathycrimson/
 ---
 
-Welcome to `catgeo` webpage! My name is Cathy.
+Welcome to `catlytics` webpage! My name is Cathy.
 
 ::: {#hero-heading}
 I've had the privilege of working in training, project & program management roles across both public institutions and the private sector. What I've enjoyed most about these diverse experiences is meeting incredible people from different cultures and background, making lasting friendships, and constantly being inspired by new perspectives.
 
-This inspiration sparked my official journey into Analytics and being technical. I'm always excited to explore both the possible and the impossible in this ever-evolving discipline.
+This inspiration sparked my official journey into Data Science and being technical. I'm always excited to explore both the possible and the impossible in this ever-evolving discipline.
 
 With data, I learn a great deal about solving business problems and am inspired to think differently for life.
 
 ## Education
 
-**Singapore Management University** \| Masters of IT in Business \| Expected Dec 2025
+**Singapore Management University** \| Masters of IT in Business
 
 ## Experience
 

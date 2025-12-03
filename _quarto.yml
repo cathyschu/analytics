@@ -7,19 +7,18 @@ website:
 #  favicon: /images/catgeo.svg
   
   navbar:
-#    logo: "images/catgeo.png"
+    logo: "images/catgeo.png"
       
     left:
       - text: "Visual Analytics"
         menu:
-        - text: "Exercise 1a"
+        - text: "Project 1"
 
 
       - text: "GeoSpatial"
         menu:
-        - text: "Exercise 1"
+        - text: "Project 1"
 
- 
     right:
       - href: index.qmd
         text: Home

@@ -5,5 +5,26 @@
     "title": "Cat Analytics",
     "section": "",
     "text": "placeholder"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Cathy C.",
+    "section": "",
+    "text": "Welcome to catlytics webpage! My name is Cathy."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "Cathy C.",
+    "section": "Education",
+    "text": "Education\nSingapore Management University | Masters of IT in Business"
+  },
+  {
+    "objectID": "about.html#experience",
+    "href": "about.html#experience",
+    "title": "Cathy C.",
+    "section": "Experience",
+    "text": "Experience\nMultiple MNCs | Program Manager, Training Instructor | Singapore"
   }
 ]
