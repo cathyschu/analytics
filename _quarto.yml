@@ -3,21 +3,22 @@ project:
   type: website
 
 website:
-  title: "Cat Analytics"
+#  title: "Catlytics"
   favicon: /images/catgeo.svg
   
   navbar:
     logo: "images/catgeo.png"
       
     left:
-      - text: "Visual Analytics"
+      - text: "Visualisation"
         menu:
         - text: "Project 1"
 
 
       - text: "GeoSpatial"
         menu:
-        - text: "Project 1"
+        - text: "Predictive Modeling for Singapore HDB Resale Prices (Dec 2025)"
+          href: geospatial/predict_hdb_resale/hdb_resale.qmd
 
     right:
       - href: index.qmd

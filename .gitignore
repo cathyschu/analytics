@@ -6,6 +6,9 @@
 .quarto
 
 /.quarto/
+data/
 *.json
 _freeze/
-*.zip
+*.zip*.rds
+geospatial/predict_hdb_resale/data/model/
+geospatial/predict_hdb_resale/data/rds/
