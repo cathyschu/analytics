@@ -17,8 +17,10 @@ website:
 
       - text: "GeoSpatial"
         menu:
-        - text: "Predictive Modeling for Singapore HDB Resale Prices (Dec 2025)"
-          href: geospatial/predict_hdb_resale/hdb_resale.qmd
+        - text: "2-Singapore Bus Passenger Travel Patterns (Nov 2025)"
+          href: geospatial/proj_2-sg_bus/sg_bus.qmd
+        - text: "3-Predictive Modeling for Singapore HDB Resale Prices (Dec 2025)"
+          href: geospatial/proj_3-predict_hdb_resale/hdb_resale.qmd
 
     right:
       - href: index.qmd

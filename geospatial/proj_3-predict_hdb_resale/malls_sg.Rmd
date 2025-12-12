@@ -1,0 +1,33 @@
+---
+title: "shopping_malls_sg"
+author: "Cathy C."
+date: "2025-11-09"
+output: html_document
+---
+
+```{r}
+pacman::p_load(rvest, tidyverse)
+```
+
+```{r}
+url <- "https://en.wikipedia.org/wiki/List_of_shopping_malls_in_Singapore"
+page <- read_html(url)
+
+mall_names <- page %>%
+  html_nodes("div.mw-parser-output ul li") %>%
+  html_text() %>%
+  trimws()
+
+mall_names <- mall_names[nchar(mall_names) > 0]
+
+mall_df <- data.frame(Mall_Name = mall_names) %>%
+  arrange(Mall_Name) %>%
+  filter(!Mall_Name %in% c("v", "t", "e")) %>%
+  unique()
+
+mall_df
+
+write_csv(mall_df, "data/rawdata/singapore_malls.csv")
+```
+
+
