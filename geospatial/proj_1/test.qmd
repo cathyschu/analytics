@@ -28,7 +28,7 @@ Due to data set sizes, we will analyse spatial patterns by quarter for all 3 Ser
 We will use **tidyverse, sf, tmap, tmap,** and **httr** packages to process data sets, along with other packages for computing KDE and plotting visualisations.
 
 | R Package | Purpose |
-|-----------------------|------------------------------------------------|
+|------------------------|------------------------------------------------|
 | **tidyverse** | the **tidyverse** package is designed to make it easy to install and load core packages from the tidyverse in a single command. There are ggplot2, dplyr, tidyr, readr, purrr, and tibble, etc to manipulate, tidy, import, visualise data. |
 | **sf** | provides support for working with simple features, a standardized way to represent geographic vector data. It serves as a comprehensive tool for handling spatial data within the R environment. |
 | **tmap** | serves the purpose of creating thematic maps, offering a flexible and intuitive way to visualize spatial data. It is designed to produce both static and interactive maps using a consistent, layer-based syntax similar to `ggplot2`. |
@@ -1122,7 +1122,7 @@ This pattern also shows that **dental healthcare accessibility gaps** do exist i
 :::::::::::: panel-tabset
 ## Laundry Services
 
-```{r}
+```{.r}
 # extract laundry data by quarter
 kde_biz_9601_quarter <- biz_9601_quarter %>%
   dplyr::select(year_quarter)
@@ -1136,6 +1136,28 @@ biz_9601_quarter_owin <- biz_9601_quarter_ppp[sg_owin]
 
 ```
 
+
+```{r}
+# Extract laundry data with quarter column
+kde_biz_9601_quarter <- biz_9601_quarter %>%
+  dplyr::select(year_quarter)
+
+# Create ppp object
+biz_9601_quarter_ppp <- as.ppp(kde_biz_9601_quarter)
+
+# Check marks are present
+table(marks(biz_9601_quarter_ppp))  
+
+# Subset to window 
+biz_9601_quarter_owin <- biz_9601_quarter_ppp[sg_owin]
+
+# Verify marks are still there 
+table(marks(biz_9601_quarter_owin))  
+
+
+```
+
+
 ```{r}
 par(bg = "#EEEEEE")
 plot(biz_9601_quarter_owin)
@@ -1144,7 +1166,7 @@ plot(biz_9601_quarter_owin)
 ### Compute STKDE
 
 ```{r}
-#convert year_quarter to numeric
+# If marks are present, convert to numeric
 marks(biz_9601_quarter_owin) <- case_when(
   marks(biz_9601_quarter_owin) == "2024-Q1" ~ 1,
   marks(biz_9601_quarter_owin) == "2024-Q2" ~ 2,
@@ -1154,9 +1176,14 @@ marks(biz_9601_quarter_owin) <- case_when(
   marks(biz_9601_quarter_owin) == "2025-Q2" ~ 6
 )
 
+# Verify conversion worked
+summary(marks(biz_9601_quarter_owin))
+
+# Run spatiotemporal density
 st_kde_9601 <- spattemp.density(biz_9601_quarter_owin)
 summary(st_kde_9601)
 ```
+
 
 ### Plot STKDE object
 
@@ -1228,6 +1255,8 @@ st_kde_9602 <- spattemp.density(biz_9602_quarter_owin)
 summary(st_kde_9602)
 
 ```
+
+
 
 ### Plot STKDE object
 
@@ -1371,6 +1400,7 @@ H₀ = The distribution of laundry services are randomly distributed.
 H₁ = The distribution of laundry services are not randomly distributed. The null hypothesis will be rejected is p-value is smaller than alpha value of 0.05.
 
 ```{r}
+#| eval: false
 F_9601.csr <- envelope(biz_9601_ppp, Fest, correction = "all", nsim = 99)
 write_rds(F_9601.csr, "data/rds/F_9601.csr")
 ```
@@ -1400,10 +1430,12 @@ For beauty services such as hair salons, manicure and pedicure, personal care se
 ### L-function estimate
 
 ```{r}
+#| eval: false
 L_9602 = Lest(biz_9602_ppp, correction = "Ripley")
 ```
 
 ```{r}
+#| echo: false
 L_9602 <- write_rds(L_9602, "data/rds/L_9602.rds")
 ```
 
