@@ -1,5 +1,5 @@
 ---
-title: "Take-home Exercise: Spatial Analysis of Essential Services in Singapore - Laundry, Beauty & Dental Business"
+title: "Spatial Analysis of Essential Services in Singapore - Laundry, Beauty & Dental Business"
 author: "Cathy C."
 date: "Sep 9, 2025"
 date-modified: "last-modified" #auto render date
@@ -21,14 +21,14 @@ The 3 chosen businesses are essential for working adults / professionals to take
 
 We will start from processing the data, perform Kernel Density Estimation, Clarke-Evans test, and then conduct analysis with visualisation and test results. First-order and second-order spatial and spatio-temporal analyses are conducted to understand the overall new businesses and their temporal patterns during the period of time Jan 2024 to June 2025.
 
-Due to data set sizes, we will analyse spatial patterns by quarter for all 3 Services. Different spatial point pattern testing menthods are used to analyse the 3 business types: G-function for Dental Services, L-function for Beauty Services, and F-function for Laundry Services.
+Due to data set sizes, we will analyse spatial patterns by quarter for all 3 Services. Different spatial point pattern testing methods are used to analyse the 3 business types: G-function for Dental Services, L-function for Beauty Services, and F-function for Laundry Services.
 
 ## 1 Loading the R packages
 
 We will use **tidyverse, sf, tmap, tmap,** and **httr** packages to process data sets, along with other packages for computing KDE and plotting visualisations.
 
 | R Package | Purpose |
-|----------------------|-------------------------------------------------|
+|-----------------------|------------------------------------------------|
 | **tidyverse** | the **tidyverse** package is designed to make it easy to install and load core packages from the tidyverse in a single command. There are ggplot2, dplyr, tidyr, readr, purrr, and tibble, etc to manipulate, tidy, import, visualise data. |
 | **sf** | provides support for working with simple features, a standardized way to represent geographic vector data. It serves as a comprehensive tool for handling spatial data within the R environment. |
 | **tmap** | serves the purpose of creating thematic maps, offering a flexible and intuitive way to visualize spatial data. It is designed to produce both static and interactive maps using a consistent, layer-based syntax similar to `ggplot2`. |
@@ -87,7 +87,7 @@ With this step, we will extract the business codes 9601, 9602, and 86204, then r
 The business types chosen are:
 
 | Business Code | Types / subtypes |
-|------------------------|-----------------------------------------------|
+|-------------------------|-----------------------------------------------|
 | **9601** | **Washing and (Dry-) Cleaning of Textile and Fur Products** |
 | 96011 | Laundry and dry cleaning services except self-operated laundries |
 | 96012 | Self-operated laundries |
@@ -559,13 +559,12 @@ plot(st_geometry(biz_9601_sf), add = TRUE, col = "#FF9800", pch = 16, cex = 0.8)
 #| fig-align: center
 
 par(bg = "#EEEEEE")
-tmap_mode("plot")
 
-tm_shape(mpsz_pop2024) +
-  tm_polygons(col = "TOTAL_POP", 
-          border.col = "#7077A1", lwd = 0.3) +
-tm_shape(biz_9601_sf) +
-  tm_dots(col = "orange", size = 0.3, alpha = 0.9) +
+tmap::tm_shape(mpsz_pop2024) +
+  tm_polygons(fill = "TOTAL_POP", 
+          col = "#7077A1", lwd = 0.3) +
+tmap::tm_shape(biz_9601_sf) +
+  tm_dots(fill = "orange", size = 0.3, fill_alpha = 0.9) +
 tm_layout(bg.color =  "#EEEEEE",
           outer.bg.color = NA,
           frame = FALSE,
@@ -611,7 +610,7 @@ plot(st_geometry(biz_9602_sf), add = TRUE, col = "#BA487F", pch = 16, cex = 0.5)
 #| fig-align: center
 
 par(bg = "#EEEEEE")
-tmap_mode("plot")
+#tmap_mode("plot")
 
 tm_shape(mpsz_pop2024) +
   tm_polygons(col = "TOTAL_POP", 
@@ -1376,7 +1375,6 @@ F_9601.csr <- envelope(biz_9601_ppp, Fest, correction = "all", nsim = 99)
 write_rds(F_9601.csr, "data/rds/F_9601.csr")
 ```
 
-
 ### Plot simulation
 
 ```{r}
@@ -1384,7 +1382,6 @@ par(bg = "#EEEEEE")
 F_9601.csr <- read_rds("data/rds/F_9601.csr")
 plot(F_9601.csr)
 ```
-
 
 ::::: notegoals
 ::: notegoals-header
