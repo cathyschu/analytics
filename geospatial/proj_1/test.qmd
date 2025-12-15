@@ -1435,8 +1435,8 @@ L_9602 = Lest(biz_9602_ppp, correction = "Ripley")
 ```
 
 ```{r}
-#| echo: false
-L_9602 <- write_rds(L_9602, "data/rds/L_9602.rds")
+#| eval: false
+write_rds(L_9602, "data/rds/L_9602.rds")
 ```
 
 ```{r}
