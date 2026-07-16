@@ -332,7 +332,12 @@ geocode <- function(block, streetname) {
                 "returnGeom" = "Y",
                 "getAddrDetails" = "N", #No. can change to Y for comparison
                 "pageNum" = "1") 
-  res <- GET(base_url, query = query) #get URL query
+  res <- GET(base_url, query = query, timeout(30)) #get URL query
+  if (status_code(res) != 200) {
+    message(paste("API Error:", status_code(res), "for", address))
+    return(data.frame(results.LATITUDE = NA, results.LONGITUDE = NA))
+  }
+  
   restext <- content(res, as = "text")
   
   output <- fromJSON(restext) %>%
@@ -346,18 +351,26 @@ geocode <- function(block, streetname) {
 -   **Run functions**
 
 ```{r}
-#| eval: false
-#| code-fold: true
+options(warn = -1) 
+
 HDBresale$LATITUDE <- 0
 HDBresale$LONGITUDE <- 0
 
 for(i in 1:nrow(HDBresale)){
+  suppressWarnings(suppressMessages({
   temp_output <- geocode(HDBresale[i, 4], HDBresale[i, 5])
   
   HDBresale$LATITUDE[i] <- temp_output$results.LATITUDE
   HDBresale$LONGITUDE[i] <- temp_output$results.LONGITUDE
+  }))
+  
+  Sys.sleep(1)  # Respect rate limits
+  
+  if(i %% 1000 == 0) message(paste("Processed", i, "rows"))  # Progress indicator
 }
 ```
+
+
 
 ## sf objects transformation
 
