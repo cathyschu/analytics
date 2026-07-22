@@ -13,7 +13,7 @@ website:
       - text: "Visualisation"
         menu:
         - text: "Click to view"
-          href: https://cathyc.netlify.app/
+          href: "https://cathyc.netlify.app/take-home_ex/take-home_ex01"
 
 
       - text: "GeoSpatial"
