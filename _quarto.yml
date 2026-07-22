@@ -12,7 +12,8 @@ website:
     left:
       - text: "Visualisation"
         menu:
-        - text: "Project 1"
+        - text: "Click to view"
+          href: https://cathyc.netlify.app/
 
 
       - text: "GeoSpatial"
