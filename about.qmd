@@ -1,10 +1,10 @@
 ---
 title: "Cathy C."
 subtitle: "Data Analytics"
-image: images/cathy.jpeg
+image: images/deer.jpeg
 about:
   template: trestles
-  image-width: 15em
+  image-width: 25em
   links:
     - icon: github
       text: Github
