@@ -1,10 +1,10 @@
 ---
-title: "Cathy C."
+title: "Cathy Troy"
 subtitle: "Data Analytics"
 image: images/deer.jpeg
 about:
   template: trestles
-  image-width: 25em
+  image-width: 20em
   links:
     - icon: github
       text: Github
@@ -29,5 +29,5 @@ With data, I learn a great deal about solving business problems and am inspired 
 
 ## Experience
 
-**Multiple MNCs** \| Program Manager, Training Instructor \| Singapore
+**Multiple MNCs** \| Program Manager, Tech Enablement, Event Management \| Singapore
 :::
